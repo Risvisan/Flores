@@ -6,11 +6,10 @@
   <link rel="stylesheet" href="./style.css">
 
 </head>
-<body>
 <!-- partial:index.partial.html -->
 <body class="container">
   <div class="night"></div>
-  <audio autoplay="autoplay">
+  <audio id="musica">
             <source src="La Distancia.mp3" type="audio/mpeg">
   </audio>
   <div class="flowers">
@@ -662,9 +661,31 @@
        <span style="--delay: 5s">Para Siempre"</span>
       <br>
     </div>
+    <script>
+    document.addEventListener("touchstart", iniciarMusica, { once: true });
+document.addEventListener("click", iniciarMusica, { once: true });
+
+function iniciarMusica(){
+  const audio = document.getElementById("musica");
+  audio.volume = 0;
+  audio.play();
+
+  let volumen = 0;
+
+  const fade = setInterval(()=>{
+    if(volumen < 1){
+      volumen += 0.02;
+      audio.volume = volumen;
+    } else {
+      clearInterval(fade);
+    }
+  },100);
+}
+    </script>
 </body>
 <!-- partial -->
   <script  src="./script.js">❤️❤️❤️❤️❤️❤️❤️❤️</script>
 
 </body>
 </html>
+
