@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
     function iniciarMusica() {
 
@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const playPromise = audio.play();
 
         if (playPromise !== undefined) {
+
             playPromise.then(() => {
 
                 let volumen = 0;
@@ -30,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }).catch(err => {
                 console.log("Autoplay bloqueado:", err);
             });
+
         }
 
     }
