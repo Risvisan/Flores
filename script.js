@@ -1,36 +1,38 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 
-setTimeout(() => {
+setTimeout(()=>{
 document.body.classList.remove("not-loaded");
-}, 1000);
+},1000);
 
 function iniciarMusica(){
 
-const audio = document.getElementById("musica");
+const audio=document.getElementById("musica");
+
 if(!audio) return;
 
-audio.volume = 0;
+audio.volume=0;
 
 audio.play();
 
-let volumen = 0;
+let volumen=0;
 
-const fade = setInterval(()=>{
+const fade=setInterval(()=>{
 
-volumen += 0.02;
+volumen+=0.02;
 
-if(volumen >= 1){
-audio.volume = 1;
+if(volumen>=1){
+audio.volume=1;
 clearInterval(fade);
 }else{
-audio.volume = volumen;
+audio.volume=volumen;
 }
 
 },100);
 
 }
 
-document.addEventListener("click", iniciarMusica, { once:true });
-document.addEventListener("touchstart", iniciarMusica, { once:true });
+document.addEventListener("click",iniciarMusica,{once:true});
+document.addEventListener("touchstart",iniciarMusica,{once:true});
 
 })
