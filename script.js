@@ -1,42 +1,36 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-    function iniciarMusica() {
+setTimeout(() => {
+document.body.classList.remove("not-loaded");
+}, 1000);
 
-        const audio = document.getElementById("musica");
-        if (!audio) return;
+function iniciarMusica(){
 
-        audio.volume = 0;
+const audio = document.getElementById("musica");
+if(!audio) return;
 
-        const playPromise = audio.play();
+audio.volume = 0;
 
-        if (playPromise !== undefined) {
+audio.play();
 
-            playPromise.then(() => {
+let volumen = 0;
 
-                let volumen = 0;
+const fade = setInterval(()=>{
 
-                const fade = setInterval(() => {
+volumen += 0.02;
 
-                    volumen += 0.02;
+if(volumen >= 1){
+audio.volume = 1;
+clearInterval(fade);
+}else{
+audio.volume = volumen;
+}
 
-                    if (volumen >= 1) {
-                        audio.volume = 1;
-                        clearInterval(fade);
-                    } else {
-                        audio.volume = volumen;
-                    }
+},100);
 
-                }, 100);
+}
 
-            }).catch(err => {
-                console.log("Autoplay bloqueado:", err);
-            });
+document.addEventListener("click", iniciarMusica, { once:true });
+document.addEventListener("touchstart", iniciarMusica, { once:true });
 
-        }
-
-    }
-
-    document.addEventListener("click", iniciarMusica, { once: true });
-    document.addEventListener("touchstart", iniciarMusica, { once: true });
-
-});
+})
