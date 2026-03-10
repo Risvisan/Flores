@@ -5,7 +5,7 @@ box-sizing:border-box;
 }
 
 body{
-background:black;
+background:#000;
 overflow:hidden;
 height:100vh;
 display:flex;
@@ -23,57 +23,43 @@ background:radial-gradient(circle at center,#020111 0%,#000 80%);
 
 .flowers{
 position:absolute;
-bottom:0;
+bottom:50px;
 display:flex;
-gap:60px;
+gap:80px;
 }
 
 .flower{
-width:60px;
-height:60px;
-background:yellow;
-border-radius:50%;
 position:relative;
-animation:flotar 4s ease-in-out infinite;
+width:80px;
+height:80px;
 }
 
-.flower::before,
-.flower::after{
-content:"";
+.flower__leaf{
 position:absolute;
 width:60px;
 height:60px;
-background:yellow;
+background:#ffd800;
 border-radius:50%;
 }
 
-.flower::before{
-left:-40px;
-}
+.flower__leaf--1{top:-30px;left:10px;}
+.flower__leaf--2{left:-30px;top:10px;}
+.flower__leaf--3{right:-30px;top:10px;}
+.flower__leaf--4{bottom:-30px;left:10px;}
 
-.flower::after{
-left:40px;
-}
-
-.flower--2{
-animation-delay:1s;
-}
-
-.flower--3{
-animation-delay:2s;
-}
-
-@keyframes flotar{
-
-0%{transform:translateY(0)}
-50%{transform:translateY(-20px)}
-100%{transform:translateY(0)}
-
+.flower__white-circle{
+position:absolute;
+width:40px;
+height:40px;
+background:white;
+border-radius:50%;
+top:20px;
+left:20px;
 }
 
 .mensaje{
 position:absolute;
-top:20%;
+top:15%;
 color:white;
 font-size:28px;
 text-align:center;
@@ -81,5 +67,5 @@ max-width:80%;
 }
 
 .not-loaded *{
-animation:none !important;
+animation:none!important;
 }
